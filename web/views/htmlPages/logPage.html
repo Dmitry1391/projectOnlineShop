@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en-ru">
+<head>
+    <title>Online-Shop</title>
+    <meta charset="UTF-8" content="text/html">
+    <link rel="stylesheet" href="/views/css/external.css">
+</head>
+<header>
+
+    <div id="divToLoginForm">
+        <form name="formLogin" style="text-align: right; padding: 5px">
+            <p>
+                <input name="findLogin" placeholder="Enter login">
+                <input name="findPass" placeholder="Enter password">
+                <input name="logBtn" type="button" onclick="isValidateFieldLogin()" value="Login"/>
+                <input name="goToRegBtn" type="button" onclick="goToRegPage()" value="Registration"/>
+            </p>
+        </form>
+    </div>
+
+    <div id="divToRegForm" style="display: none">
+        <form name="formRegistration" style="text-align: right; ; padding: 5px">
+            <p>
+                <input name="findRegName" type="text" placeholder="Enter name">
+                <input name="findRegLogin" type="text" placeholder="Enter login">
+                <input name="findRegPass" type="password" placeholder="Enter password">
+                <input name="regBtn" type="button" onclick="isValidateFieldRegister()" value="Registration"/>
+                <input name="BackLogBtn" type="button" onclick='location.href="/views/htmlPages/logPage.html"' value="Back to login"/>
+            </p>
+        </form>
+    </div>
+
+</header>
+<body>
+
+<div class="content" style="text-align: center">
+    <div id="divTop" style="text-align: right"></div>
+
+    <div id="startPage" style="text-align:center; padding-top: 18%">
+        <h1>Online - Shop</h1>
+    </div>
+
+</div>
+
+<footer></footer>
+
+<script src="/views/js/scriptAdmin.js"></script>
+<script src="/views/js/scriptUtils.js"></script>
+<script src="/views/js/scriptLogin.js"></script>
+<script src="/views/js/scriptRegistration.js"></script>
+<script type="text/javascript">
+    function goToRegPage() {
+        document.getElementById("divTop").style.display = "none";
+        document.getElementById("divToLoginForm").style.display = "none";
+        document.getElementById("divToRegForm").style.display = "";
+    }
+</script>
+
+</body>
+</html>

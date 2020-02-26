@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html lang="en-ru">
+<head>
+    <title>Online-Shop</title>
+    <meta charset="UTF-8" content="text/html">
+    <link rel="stylesheet" href="/views/css/styleCLient.css">
+    <script src="/views/js/scriptClient.js"></script>
+    <script src="/views/js/scriptUtils.js"></script>
+    <script type="text/javascript">
+        function loadPrefClient() {
+
+            showProductsForClient();
+
+            let dataUser = document.getElementById('clientDataUser');
+
+            if (localStorage.getItem('identificationDataClient') != null) {
+                identificationDataClient = JSON.parse(localStorage.getItem('identificationDataClient'));
+                dataUser.innerText = identificationDataClient['login'];
+            } else {
+                location.href = "/views/htmlPages/logPage.html";
+            }
+
+            checkCart();
+            showMiniCart();
+        }
+    </script>
+</head>
+<header>
+    <label style="padding: 1%; float: left; color: white">
+        <a>Welcome to Online-Shop,</a>
+        <output id="clientDataUser"></output>
+        <a>!</a>
+    </label>
+    <nav class="menu" style="float: right">
+        <ul>
+            <li><a name="btnShowProducts" href="#" onclick="showProductsForClient()">Show products</a></li>
+            <li><a name="btnShowMyOrders" href="#" onclick="showOrdersForClient()">My orders</a></li>
+            <li><a name="btnGoToCart" href="#" onclick="goToCart()">Cart - <output id="countProductInCart"></output>
+            </a></li>
+            <li><a href="#">Settings</a>
+                <ul>
+                    <li><a name="settingsMe" href="#" onclick="subMenuSettingsMe()">Show my details</a></li>
+                    <li><a name="btnLogout" href="#" onclick="exitLocation()">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<body onload=loadPrefClient()>
+<div class="content">
+    <div id="settingForClient" hidden>
+        <form name="formDataClient">
+            <p>
+                Your data:
+            </p>
+            <br>
+            <p>
+                <label>Name:
+                    <output id="putClientName"></output>
+                </label>
+            </p>
+
+            <p>
+                <label>Login:
+                    <output id="putClientLogin"></output>
+                </label>
+            </p>
+
+            <p>
+                <label>Password:
+                    <output id="putClientPass"></output>
+                </label>
+            </p>
+
+            <p>
+                <label>In black list ?:
+                    <output id="putClientBList"></output>
+                </label>
+            </p>
+            <br>
+
+            <p>
+                <input type="button" name="button" value="Delete account" onclick="deleteClientByLogin()"/>
+                <input type="button" name="button" value="Rename Name" onclick="renameClientName(document.getElementById('clientDataUser').value)"/>
+                <input name="queryClientNewName" placeholder="Enter new name">
+            </p>
+        </form>
+    </div>
+
+    <div id="divShowProducts" hidden>
+        <h3>Products</h3>
+
+        <div>
+            <table id="contentProductTableForClient">
+                <tr>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>PRICE</th>
+                    <th></th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="divShowMyOrders" hidden>
+        <h3>MyOrders</h3>
+
+        <div>
+            <table id="contentOrderTableForClient">
+                <tr>
+                    <th>ID</th>
+                    <th>STATUS</th>
+                    <th>COST</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="divOrderDetailsForClient" hidden>
+        <h3>My order-details</h3>
+        <br>
+        <input type="button" onclick="showOrdersForClient()" value="Back"/>
+        <br>
+        <a>Order №:</a>
+        <output id="clientOrderNumber"></output>
+        <br>
+
+        <div>
+            <table id="contentOrderDetailsTableForClient">
+                <tr>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>COUNT</th>
+                    <th>COST</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="divFrame" hidden>
+        <iframe id="frame"></iframe>
+    </div>
+
+</div>
+
+<footer>
+    <p></p>
+    Author: Huborevich Dmitry
+    <p></p>
+</footer>
+
+<script src="/views/js/scriptProduct.js" type="text/javascript"></script>
+</body>
+</html>

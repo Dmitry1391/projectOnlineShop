@@ -1,0 +1,74 @@
+<html lang="en-ru">
+<head>
+    <meta charset="UTF-8" content="text/html">
+    <script src="/views/js/scriptForClientView.js"></script>
+    <script src="/views/js/scriptUtils.js"></script>
+    <link rel="stylesheet" href="/views/css/external.css">
+</head>
+<body>
+
+<div>
+    <form name="formGetAllClientsAndOrders" style="padding: 5px">
+        <input type="button" onclick="getAllClients()" value="Get All Clients"/>
+        <input type="button" onclick="getAllOrders()" value="Get All Orders"/>
+        <input type="button" name="buttonFAID" value="Find all clients in Black List" onclick="getAllClientInBL()"/>
+        <input type="button" name="buttonFAID" value="Find all orders by status  'awaiting'" onclick="getOrderByStatus('awaiting')"/>
+        <input type="button" name="buttonFAID" value="Find all orders by status  'paid'" onclick="getOrderByStatus('paid')"/>
+    </form>
+
+    <form name="formGetOrderByClientId" style="padding: 5px">
+        <p>
+            <input name="findRequestQueryClientID" placeholder="Enter client ID">
+            <input type="button" name="buttonFAID" value="Find order by client ID" onclick="getOrderByClientId()"/>
+        </p>
+        <br>
+        <p>
+            <input name="findRequestQueryOrderID" placeholder="Enter order ID">
+            <input type="button" name="buttonFAID" value="Find order by order ID" onclick="getOrderByOrderId()"/>
+        </p>
+    </form>
+
+</div>
+
+<div style="padding: 5px">
+
+    <table id="contentTClients">
+        <tr>
+            <th>Client Id</th>
+            <th>Client Name</th>
+            <th>Login</th>
+            <th>Password</th>
+            <th>B.List</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </table>
+
+    <table id="contentTOrders">
+        <tr>
+            <th>Client Id</th>
+            <th>Order Id</th>
+            <th>Status</th>
+            <th>Cost</th>
+            <th></th>
+        </tr>
+    </table>
+
+</div>
+<script>
+
+    // Поиск ордеров по клиенту в БД
+    function getOrderByClientId() {
+        let queryClientId = document.formGetOrderByClientId.findRequestQueryClientID.value;
+        getOrderById("getAllOrdersByClientID", queryClientId);
+    }
+
+    // Поиск ордеров по ордеру в БД
+    function getOrderByOrderId() {
+        let queryOrderId = document.formGetOrderByClientId.findRequestQueryOrderID.value;
+        getOrderById("getOrderByID", queryOrderId);
+    }
+</script>
+
+</body>
+</html>

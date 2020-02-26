@@ -1,0 +1,55 @@
+<html lang="en-ru">
+<head>
+    <meta charset="UTF-8" content="text/html">
+    <link rel="stylesheet" href="/views/css/external.css">
+</head>
+<body>
+<div style="float: left">
+
+    <form name="updateProduct" style="padding: 5px">
+        <p>
+            <input name="queryId" placeholder="Enter product ID">
+            <input name="queryNewName" placeholder="Enter new product name">
+            <input name="queryNewPrice" placeholder="Enter new product price">
+            <input type="button" onclick="update()" value="Update product"/>
+        </p>
+    </form>
+
+    <form name="createProduct" style="padding: 5px">
+        <p>
+            <input name="queryName" placeholder="Enter product name">
+            <input name="queryPrice" placeholder="Enter product price">
+            <input type="button" onclick="create()" value="Create product"/>
+        </p>
+    </form>
+
+    <form name="formProductById" style="padding: 5px">
+        <p>
+            <input name="queryProductById" placeholder="Enter product ID">
+            <input type="button" value="Get product by ID" onclick="getProductByID()"/>
+        </p>
+    </form>
+
+    <form name="formGetAllProducts" style="padding: 5px">
+        <p>
+            <input type="button" onclick="getAllProducts()" value="Get all products"/>
+        </p>
+    </form>
+
+</div>
+<div style="float: right; padding: 5px">
+    <table id="contentTable" >
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>PRICE</th>
+            <th></th>
+        </tr>
+    </table>
+</div>
+
+<script charset="utf-8" type="text/javascript" src="/views/js/scriptProduct.js"></script>
+<script charset="utf-8" type="text/javascript" src="/views/js/scriptUtils.js"></script>
+
+</body>
+</html>

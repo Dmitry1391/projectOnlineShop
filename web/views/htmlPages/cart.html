@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-ru">
+<head>
+    <title>Online-Shop</title>
+    <meta charset="UTF-8" content="text/html">
+    <link rel="stylesheet" href="/views/css/styleCart.css">
+</head>
+<header>
+
+    <label style="float: left">
+        <a>Welcome to Cart!</a>
+    </label>
+    <nav class="menu" style="float: right">
+        <ul>
+            <li>
+                <a name="btnBackToClientPage" href="#" onclick='location.href="/views/htmlPages/clientPage.html"'>Back</a>
+            </li>
+        </ul>
+    </nav>
+
+</header>
+<body onload="getAllProductsInCart()">
+<div class="content">
+
+    <div id="noGoods"></div>
+
+    <div>
+        <table id="tabGoods" hidden>
+            <tr>
+                <th>NAME</th>
+                <th>COUNT</th>
+                <th></th>
+                <th></th>
+                <th>COST</th>
+                <th></th>
+            </tr>
+        </table>
+
+        <br>
+
+        <div id="totalCostOrder">
+            <label>Total cost order :
+                <output id="totalCostInCart">""</output>
+                <input type="button" name="button" value="Create order" onclick="goToCreateOrder()"/>
+            </label>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p></p>
+    Author: Huborevich Dmitry
+    <p></p>
+</footer>
+
+<script src="/views/js/scriptCart.js"></script>
+<script src="/views/js/scriptUtils.js"></script>
+</body>
+</html>

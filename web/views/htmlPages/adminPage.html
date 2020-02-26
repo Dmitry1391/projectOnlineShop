@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html lang="en-ru">
+<head>
+    <title>Online-Shop</title>
+    <meta charset="UTF-8" content="text/html">
+    <link rel="stylesheet" href="/views/css/external.css">
+    <script src="/views/js/scriptAdmin.js"></script>
+    <script src="/views/js/scriptUtils.js"></script>
+    <script type="text/javascript">
+        function loadPrefAdmin() {
+
+            let dataUser = document.getElementById('adminDataUser');
+
+            if (localStorage.getItem('identificationDataAdmin') != null) {
+                identificationDataAdmin = JSON.parse(localStorage.getItem('identificationDataAdmin'));
+                dataUser.innerText = identificationDataAdmin['login'];
+            } else {
+                location.href = "/views/htmlPages/logPage.html";
+            }
+            subMenuSettingsMe();
+        }
+    </script>
+</head>
+<header>
+    <label style="padding: 1%; float: left; color: white">Welcome ,
+        <output id="adminDataUser">""</output>
+        , you administrator!
+    </label>
+    <nav class="menu" style="float: right">
+        <ul>
+            <li><a name="settingsAdmins" href="#" onclick="goToFrameAdmins()">Settings for
+                admins</a></li>
+            <li><a name="settingsProducts" href="#" onclick="goToFrameProducts()">Settings for
+                products</a></li>
+            <li><a name="settingsClients" href="#" onclick="goToFrameClients()">Settings for clients</a>
+            </li>
+            <li><a href="#">Settings</a>
+                <ul>
+                    <li><a name="settingsMe" href="#" onclick="subMenuSettingsMe()">Show my details</a></li>
+
+                    <li><a name="btnLogout" href="#" onclick="exitLocation()">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+</header>
+
+<body onload=loadPrefAdmin()>
+
+<div class="content">
+
+    <div id="settingForAdmin" hidden>
+        <form name="formDataAdmin">
+            <h3>Your data:</h3>
+            <br>
+            <p>
+                <label>Your ID:
+                    <output id="putAdminId">""</output>
+                </label>
+            </p>
+
+            <p>
+                <label>Your name:
+                    <output id="putAdminName">""</output>
+                </label>
+            </p>
+
+            <p>
+                <label>Your login:
+                    <output id="putAdminLogin">""</output>
+                </label>
+            </p>
+
+            <p>
+                <label>Your password:
+                    <output id="putAdminPass">""</output>
+                </label>
+            </p>
+
+            <br>
+
+            <p>
+                <input type="button" name="button" value="Delete"
+                       onclick="deleteByLogin(document.getElementById('adminDataUser').value)"/>
+                <input type="button" name="button" value="Rename Name"
+                       onclick="renameAdminName(document.getElementById('adminDataUser').value)"/>
+                <input name="queryAdminNewName" placeholder="Enter new name">
+            </p>
+        </form>
+    </div>
+    <div id="divFrame">
+        <iframe id="frame"></iframe>
+    </div>
+
+</div>
+
+<footer>
+    Author: Huborevich Dmitry
+</footer>
+
+<script src="/views/js/scriptProduct.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+    function subMenuSettingsMe() {
+        getDataAdmin();
+        document.getElementById("divFrame").hidden = true;
+        document.getElementById("settingForAdmin").hidden = false;
+    }
+
+    function goToFrameAdmins() {
+        document.getElementById("settingForAdmin").hidden = true;
+        document.getElementById("divFrame").hidden = false;
+        document.getElementById("frame").src = "/views/htmlPages/adminView.html";
+    }
+
+    function goToFrameProducts() {
+        document.getElementById("settingForAdmin").hidden = true;
+        document.getElementById("divFrame").hidden = false;
+        document.getElementById("frame").src = "/views/htmlPages/productView.html";
+    }
+
+    function goToFrameClients() {
+        document.getElementById("settingForAdmin").hidden = true;
+        document.getElementById("divFrame").hidden = false;
+        document.getElementById("frame").src = "/views/htmlPages/clientView.html";
+    }
+
+    function exitLocation() {
+        localStorage.removeItem('identificationDataAdmin');
+        location.href = "/views/htmlPages/logPage.html";
+    }
+
+</script>
+</body>
+</html>

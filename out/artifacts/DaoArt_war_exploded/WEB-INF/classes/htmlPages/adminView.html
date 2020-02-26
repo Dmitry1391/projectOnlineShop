@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-ru">
+<head>
+    <meta charset="UTF-8" content="text/html">
+    <link rel="stylesheet" href="/views/css/external.css">
+    <script src="/views/js/scriptAdmin.js"></script>
+    <script src="/views/js/scriptUtils.js"></script>
+</head>
+<body>
+
+<div>
+
+    <form name="formAdminCreate" style="padding: 5px">
+        <p>
+            <input name="createRequestAdminName" placeholder="Enter Name">
+            <input name="createRequestAdminLogin" placeholder="Enter Login">
+            <input name="createRequestAdminPassword" placeholder="Enter Password">
+            <input type="button" name="button" value="Create Admin" onclick="createAdmin()"/>
+        </p>
+    </form>
+
+    <form name="formAdminID" style="padding: 5px">
+        <p>
+            <input name="findRequestQueryID" placeholder="Enter ID">
+            <input type="button" name="buttonFAID" value="Find by ID" onclick="getById()"/>
+        </p>
+    </form>
+
+    <form name="formAdminLogin" style="padding: 5px">
+        <p>
+            <input name="findRequestQueryLogin" placeholder="Enter login">
+            <input type="button" name="button" value="Find by login" onclick="getByLogin()"/>
+        </p>
+    </form>
+
+    <form name="formGetAllAdmins" style="padding: 5px">
+        <p>
+            <input type="button" onclick="getAllAdmins()" value="Get all admins"/>
+        </p>
+    </form>
+
+</div>
+
+<form name="formTable" style="padding: 5px">
+    <table id="contentTable">
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>LOGIN</th>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
